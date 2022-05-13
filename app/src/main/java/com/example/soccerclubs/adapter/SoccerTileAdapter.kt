@@ -8,10 +8,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.soccerclubs.R
+import com.example.soccerclubs.SoccerTileInterface
 import com.example.soccerclubs.data.SoccerTile
 
 class SoccerTileAdapter(
-    private val data: ArrayList<SoccerTile>
+    private val data: ArrayList<SoccerTile>,
+    private val soccerTileInterface: SoccerTileInterface
 ): RecyclerView.Adapter<SoccerTileAdapter.SoccerTileViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SoccerTileViewHolder {
@@ -19,7 +21,7 @@ class SoccerTileAdapter(
     }
 
     override fun onBindViewHolder(holder: SoccerTileViewHolder, position: Int) {
-        holder.onBind(data[position])
+        holder.onBind(data[position], soccerTileInterface)
     }
 
     override fun getItemCount(): Int {
@@ -35,12 +37,13 @@ class SoccerTileAdapter(
         private val descriptionTextView: TextView = itemView.findViewById(R.id.descriptionTextView)
         private val button: Button = itemView.findViewById(R.id.button)
 
-        fun onBind(SoccerTile: SoccerTile) {
+        fun onBind(SoccerTile: SoccerTile, soccerTileInterface: SoccerTileInterface) {
             headerImageView.setImageResource(SoccerTile.headerImageResId)
             titleTextView.text = SoccerTile.title
             descriptionTextView.text = SoccerTile.description
+
             button.setOnClickListener {
-                Toast.makeText(it.context, "$adapterPosition", Toast.LENGTH_SHORT).show()
+                soccerTileInterface.onLearnMoreButtonClicked(adapterPosition)
             }
         }
     }

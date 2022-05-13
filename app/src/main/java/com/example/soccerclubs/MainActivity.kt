@@ -1,24 +1,32 @@
 package com.example.soccerclubs
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import com.example.soccerclubs.adapter.SoccerTileAdapter
 import com.example.soccerclubs.data.SoccerTile
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SoccerTileInterface {
+
+    private lateinit var soccerTileList: ArrayList<SoccerTile>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val soccerTileList = getSoccerTileList()
+        soccerTileList = getSoccerTileList()
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-        val soccerTileAdapter = SoccerTileAdapter(soccerTileList)
+        val soccerTileAdapter = SoccerTileAdapter(soccerTileList, this)
 
         recyclerView.adapter = soccerTileAdapter
 
         soccerTileAdapter.notifyDataSetChanged()
+    }
+
+    override fun onLearnMoreButtonClicked(position: Int) {
+        startActivity(Intent(this, SoccerTileDetailActivity::class.java))
     }
 
     private fun getSoccerTileList(): ArrayList<SoccerTile> {

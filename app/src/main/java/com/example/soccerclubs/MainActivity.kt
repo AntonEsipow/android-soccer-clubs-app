@@ -2,6 +2,8 @@ package com.example.soccerclubs
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.RecyclerView
+import com.example.soccerclubs.adapter.SoccerTileAdapter
 import com.example.soccerclubs.data.SoccerTile
 
 class MainActivity : AppCompatActivity() {
@@ -10,6 +12,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val soccerTileList = getSoccerTileList()
+
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        val soccerTileAdapter = SoccerTileAdapter(soccerTileList)
+
+        recyclerView.adapter = soccerTileAdapter
+
+        soccerTileAdapter.notifyDataSetChanged()
     }
 
     private fun getSoccerTileList(): ArrayList<SoccerTile> {

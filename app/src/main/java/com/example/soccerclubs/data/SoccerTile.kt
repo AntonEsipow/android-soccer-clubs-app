@@ -1,5 +1,7 @@
 package com.example.soccerclubs.data
 
+import java.io.Serializable
+
 data class SoccerTile(
     val id: String = "",
     val title: String = "",
@@ -8,7 +10,7 @@ data class SoccerTile(
     val buttonText: String = "",
     val headerImageResId: Int = 0,
     val headerImageUrl: String? = null,
-)
+): Serializable
 
 // everton https://f-edits.tumblr.com/image/151089497233
 // westham https://f-edits.tumblr.com/image/151053901701

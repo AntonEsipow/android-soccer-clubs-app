@@ -26,7 +26,11 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
     }
 
     override fun onLearnMoreButtonClicked(position: Int) {
-        startActivity(Intent(this, SoccerTileDetailActivity::class.java))
+        val soccerTile = soccerTileList[position]
+        val intent = Intent(this, SoccerTileDetailActivity::class.java).apply {
+            putExtra("soccerTile", soccerTile)
+        }
+        startActivity(intent)
     }
 
     private fun getSoccerTileList(): ArrayList<SoccerTile> {

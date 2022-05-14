@@ -1,7 +1,10 @@
 package com.example.soccerclubs
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.soccerclubs.data.SoccerTile
 
 class SoccerTileDetailActivity: AppCompatActivity() {
+
+    private lateinit var soccerTile: SoccerTile
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +24,7 @@ class SoccerTileDetailActivity: AppCompatActivity() {
             title = "Club Overview"
         }
 
-        val soccerTile = intent.getSerializableExtra("soccerTile") as? SoccerTile ?: SoccerTile(
+        soccerTile = intent.getSerializableExtra("soccerTile") as? SoccerTile ?: SoccerTile(
             id = "Oops",
             description = "Something goes wrong.",
             descriptionLong = "Please try again later",
@@ -43,7 +48,31 @@ class SoccerTileDetailActivity: AppCompatActivity() {
                 finish()
                 true
             }
+            R.id.menuItemLink -> {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(soccerTile.teamUrl))
+                startActivity(intent)
+                return true
+            }
+            R.id.menuItemFavorite -> {
+                val isCurrentFavorite = soccerTile.isFavorite
+                if(isCurrentFavorite) {
+                    item.setIcon(R.drawable.ic_favorite_outline_24dp)
+                } else {
+                    item.setIcon(R.drawable.ic_favorite_24dp)
+                }
+
+                soccerTile.isFavorite = !isCurrentFavorite
+                true
+            }
             else -> onOptionsItemSelected(item)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_soccer_tile_detail, menu)
+
+        if(soccerTile.isFavorite)
+            menu?.findItem(R.id.menuItemFavorite)?.setIcon(R.drawable.ic_favorite_24dp)
+        return true
     }
 }

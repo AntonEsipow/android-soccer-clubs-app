@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
                     descriptionLong = "A longer description of the club that wouldn't fit on a single line",
                     buttonText = "Learn More",
                     headerImageResId = R.drawable.everton_header,
-                    headerImageUrl = "https://f-edits.tumblr.com/image/151089497233"
+                    headerImageUrl = "https://f-edits.tumblr.com/image/151089497233",
+                    teamUrl = "https://www.evertonfc.com/"
                 ))
             add(
                 SoccerTile(
@@ -53,7 +54,8 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
                     descriptionLong = "A longer description of the club that wouldn't fit on a single line",
                     buttonText = "Learn More",
                     headerImageResId = R.drawable.westham_header,
-                    headerImageUrl = "https://f-edits.tumblr.com/image/151053901701"
+                    headerImageUrl = "https://f-edits.tumblr.com/image/151053901701",
+                    teamUrl = "https://www.whufc.com/"
                 ))
             add(
                 SoccerTile(
@@ -63,7 +65,8 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
                     descriptionLong = "A longer description of the club that wouldn't fit on a single line",
                     buttonText = "Learn More",
                     headerImageResId = R.drawable.paris_header,
-                    headerImageUrl = "https://f-edits.tumblr.com/image/151043279087"
+                    headerImageUrl = "https://f-edits.tumblr.com/image/151043279087",
+                    teamUrl = "https://parisfc.fr/"
                 ))
             add(
                 SoccerTile(
@@ -73,7 +76,8 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
                     descriptionLong = "A longer description of the club that wouldn't fit on a single line",
                     buttonText = "Learn More",
                     headerImageResId = R.drawable.arsenal_header,
-                    headerImageUrl = "https://f-edits.tumblr.com/image/150401426840"
+                    headerImageUrl = "https://f-edits.tumblr.com/image/150401426840",
+                    teamUrl = "https://www.arsenal.com/"
                 ))
             add(
                 SoccerTile(
@@ -83,7 +87,8 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
                     descriptionLong = "A longer description of the club that wouldn't fit on a single line",
                     buttonText = "Learn More",
                     headerImageResId = R.drawable.borussia_header,
-                    headerImageUrl = "https://f-edits.tumblr.com/image/150356303395"
+                    headerImageUrl = "https://f-edits.tumblr.com/image/150356303395",
+                    teamUrl = "https://www.bvb.de/eng"
                 ))
             add(
                 SoccerTile(
@@ -93,7 +98,8 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
                     descriptionLong = "A longer description of the club that wouldn't fit on a single line",
                     buttonText = "Learn More",
                     headerImageResId = R.drawable.juventus_header,
-                    headerImageUrl = "https://f-edits.tumblr.com/image/150299524153"
+                    headerImageUrl = "https://f-edits.tumblr.com/image/150299524153",
+                    teamUrl = "https://www.juventus.com/en/"
                 ))
         }
     }

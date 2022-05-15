@@ -12,7 +12,7 @@ data class SoccerTile(
     val headerImageUrl: String? = null,
     val teamUrl: String = "",
     var isFavorite: Boolean = false
-): Serializable
+)
 
 // everton https://f-edits.tumblr.com/image/151089497233
 // westham https://f-edits.tumblr.com/image/151053901701

@@ -24,7 +24,11 @@ class SoccerTileDetailActivity: AppCompatActivity() {
             title = "Club Overview"
         }
 
-        soccerTile = intent.getSerializableExtra("soccerTile") as? SoccerTile ?: SoccerTile(
+        val selectedSoccerTileId = intent.getStringExtra("soccerTileId")
+
+        soccerTile = MainActivity.soccerTileList.find {
+            it.id == selectedSoccerTileId
+        } ?: SoccerTile(
             id = "Oops",
             description = "Something goes wrong.",
             descriptionLong = "Please try again later",
@@ -60,7 +64,6 @@ class SoccerTileDetailActivity: AppCompatActivity() {
                 } else {
                     item.setIcon(R.drawable.ic_favorite_24dp)
                 }
-
                 soccerTile.isFavorite = !isCurrentFavorite
                 true
             }

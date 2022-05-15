@@ -9,7 +9,9 @@ import com.example.soccerclubs.data.SoccerTile
 
 class MainActivity : AppCompatActivity(), SoccerTileInterface {
 
-    private lateinit var soccerTileList: ArrayList<SoccerTile>
+    companion object {
+        lateinit var soccerTileList: ArrayList<SoccerTile>
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,14 +23,12 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
         val soccerTileAdapter = SoccerTileAdapter(soccerTileList, this)
 
         recyclerView.adapter = soccerTileAdapter
-
-        soccerTileAdapter.notifyDataSetChanged()
     }
 
     override fun onLearnMoreButtonClicked(position: Int) {
         val soccerTile = soccerTileList[position]
         val intent = Intent(this, SoccerTileDetailActivity::class.java).apply {
-            putExtra("soccerTile", soccerTile)
+            putExtra("soccerTileId", soccerTile.id)
         }
         startActivity(intent)
     }

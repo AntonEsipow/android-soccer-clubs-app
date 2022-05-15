@@ -36,6 +36,7 @@ class SoccerTileAdapter(
         private val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
         private val descriptionTextView: TextView = itemView.findViewById(R.id.descriptionTextView)
         private val button: Button = itemView.findViewById(R.id.button)
+        private val favoriteImageView: ImageView = itemView.findViewById(R.id.favoriteImageView)
 
         fun onBind(SoccerTile: SoccerTile, soccerTileInterface: SoccerTileInterface) {
             headerImageView.setImageResource(SoccerTile.headerImageResId)
@@ -44,6 +45,12 @@ class SoccerTileAdapter(
 
             button.setOnClickListener {
                 soccerTileInterface.onLearnMoreButtonClicked(adapterPosition)
+            }
+
+            val icon = if(SoccerTile.isFavorite) R.drawable.ic_favorite_24dp else R.drawable.ic_favorite_outline_24dp
+            favoriteImageView.setImageResource(icon)
+            favoriteImageView.setOnClickListener{
+                soccerTileInterface.onFavoriteClicked(adapterPosition)
             }
         }
     }

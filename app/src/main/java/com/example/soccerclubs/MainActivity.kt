@@ -13,16 +13,24 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
         lateinit var soccerTileList: ArrayList<SoccerTile>
     }
 
+    private lateinit var soccerTileAdapter: SoccerTileAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportActionBar?.title = "Soccer Clubs Home"
+
         soccerTileList = getSoccerTileList()
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-        val soccerTileAdapter = SoccerTileAdapter(soccerTileList, this)
-
+        soccerTileAdapter = SoccerTileAdapter(soccerTileList, this)
         recyclerView.adapter = soccerTileAdapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        soccerTileAdapter.notifyDataSetChanged()
     }
 
     override fun onLearnMoreButtonClicked(position: Int) {
@@ -31,6 +39,12 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
             putExtra("soccerTileId", soccerTile.id)
         }
         startActivity(intent)
+    }
+
+    override fun onFavoriteClicked(position: Int) {
+        val soccerTile = soccerTileList[position]
+        soccerTile.isFavorite = !soccerTile.isFavorite
+        soccerTileAdapter.notifyItemChanged(position)
     }
 
     private fun getSoccerTileList(): ArrayList<SoccerTile> {

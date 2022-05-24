@@ -10,10 +10,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.soccerclubs.data.SoccerTile
 
-class DetailFragment : Fragment(R.layout.fragment_detail) {
+class DetailFragment : BaseMainActivityFragment(R.layout.fragment_detail) {
 
     private val soccerTile: SoccerTile by lazy {
-        (activity as MainActivity).soccerTileList.find {
+        mainActivity.soccerTileList.find {
             it.id == requireArguments().getString("soccerTileId")
         } ?: SoccerTile()
     }
@@ -22,10 +22,11 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         super.onViewCreated(view, savedInstanceState)
 
         setHasOptionsMenu(true)
-        (activity as MainActivity).supportActionBar?.apply {
+        mainActivity.supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            title = "Club Overview"
         }
+
+        setActionBarTitle("Club Overview")
 
         val headerImageView: ImageView = view.findViewById(R.id.teamHeaderImageView)
         val titleTextView: TextView = view.findViewById(R.id.titleTextView)

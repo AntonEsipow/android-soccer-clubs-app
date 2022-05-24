@@ -9,22 +9,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.soccerclubs.adapter.SoccerTileAdapter
 import com.example.soccerclubs.data.SoccerTile
 
-class ListFragment : Fragment(R.layout.fragment_list) {
+class ListFragment : BaseMainActivityFragment(R.layout.fragment_list) {
 
     private lateinit var soccerTileAdapter: SoccerTileAdapter
     private val soccerTileList: ArrayList<SoccerTile>
-        get() = (activity as MainActivity).soccerTileList
+        get() = mainActivity.soccerTileList
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as MainActivity).supportActionBar?.apply{
-            title = "Soccer Clubs Home"
+        mainActivity.supportActionBar?.apply{
             setDisplayHomeAsUpEnabled(false)
         }
 
+        setActionBarTitle("Soccer Clubs Home")
+
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
-        soccerTileAdapter = SoccerTileAdapter(soccerTileList, activity as MainActivity)
+        soccerTileAdapter = SoccerTileAdapter(soccerTileList, mainActivity)
         recyclerView.adapter = soccerTileAdapter
     }
 

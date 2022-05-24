@@ -8,6 +8,8 @@
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-soccer-clubs-app/app/src/main/res/drawable/ic_link_24dp.xml" value="0.204" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-soccer-clubs-app/app/src/main/res/layout/activity_main.xml" value="0.2542991141219385" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-soccer-clubs-app/app/src/main/res/layout/activity_soccer_tile_detail.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Anton/AndroidStudioProjects/android-soccer-clubs-app/app/src/main/res/layout/fragment_detail.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Anton/AndroidStudioProjects/android-soccer-clubs-app/app/src/main/res/layout/fragment_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-soccer-clubs-app/app/src/main/res/layout/view_holder_soccer_tile.xml" value="0.264" />
         <entry key="..\:/Users/Anton/AndroidStudioProjects/android-soccer-clubs-app/app/src/main/res/menu/menu_soccer_tile_detail.xml" value="0.25416666666666665" />
       </map>

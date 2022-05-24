@@ -3,17 +3,14 @@ package com.example.soccerclubs
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.commit
 import androidx.recyclerview.widget.RecyclerView
 import com.example.soccerclubs.adapter.SoccerTileAdapter
 import com.example.soccerclubs.data.SoccerTile
 
 class MainActivity : AppCompatActivity(), SoccerTileInterface {
 
-    companion object {
-        lateinit var soccerTileList: ArrayList<SoccerTile>
-    }
-
-    private lateinit var soccerTileAdapter: SoccerTileAdapter
+    lateinit var soccerTileList: ArrayList<SoccerTile>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,33 +18,35 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
 
         supportActionBar?.title = "Soccer Clubs Home"
 
-        soccerTileList = getSoccerTileList()
+        soccerTileList = getList()
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-        soccerTileAdapter = SoccerTileAdapter(soccerTileList, this)
-        recyclerView.adapter = soccerTileAdapter
-    }
-
-    override fun onResume() {
-        super.onResume()
-        soccerTileAdapter.notifyDataSetChanged()
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            add(R.id.fragmentContainerView, ListFragment())
+        }
     }
 
     override fun onLearnMoreButtonClicked(position: Int) {
         val soccerTile = soccerTileList[position]
-        val intent = Intent(this, SoccerTileDetailActivity::class.java).apply {
-            putExtra("soccerTileId", soccerTile.id)
+
+        supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            val bundle = Bundle().apply {
+                putString("soccerTileId", soccerTile.id)
+            }
+            hide(ListFragment())
+            add(R.id.fragmentContainerView, DetailFragment().apply {
+                arguments = bundle
+            })
         }
-        startActivity(intent)
     }
 
     override fun onFavoriteClicked(position: Int) {
         val soccerTile = soccerTileList[position]
         soccerTile.isFavorite = !soccerTile.isFavorite
-        soccerTileAdapter.notifyItemChanged(position)
     }
 
-    private fun getSoccerTileList(): ArrayList<SoccerTile> {
+    private fun getList(): ArrayList<SoccerTile> {
         return ArrayList<SoccerTile>().apply {
             add(
                 SoccerTile(

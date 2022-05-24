@@ -26,14 +26,14 @@ class SoccerTileDetailActivity: AppCompatActivity() {
 
         val selectedSoccerTileId = intent.getStringExtra("soccerTileId")
 
-        soccerTile = MainActivity.soccerTileList.find {
-            it.id == selectedSoccerTileId
-        } ?: SoccerTile(
-            id = "Oops",
-            description = "Something goes wrong.",
-            descriptionLong = "Please try again later",
-            headerImageResId = R.drawable.error_header
-        )
+//        soccerTile = MainActivity.soccerTileList.find {
+//            it.id == selectedSoccerTileId
+//        } ?: SoccerTile(
+//            id = "Oops",
+//            description = "Something goes wrong.",
+//            descriptionLong = "Please try again later",
+//            headerImageResId = R.drawable.error_header
+//        )
 
         val headerImageView: ImageView = findViewById(R.id.teamHeaderImageView)
         val titleTextView: TextView = findViewById(R.id.titleTextView)

@@ -18,7 +18,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        (activity as MainActivity).supportActionBar?.title = "List Fragment"
+        (activity as MainActivity).supportActionBar?.apply{
+            title = "Soccer Clubs Home"
+            setDisplayHomeAsUpEnabled(false)
+        }
 
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
         soccerTileAdapter = SoccerTileAdapter(soccerTileList, activity as MainActivity)
@@ -28,6 +31,10 @@ class ListFragment : Fragment(R.layout.fragment_list) {
     override fun onResume() {
         super.onResume()
         soccerTileAdapter.notifyDataSetChanged()
+    }
+
+    fun onFavoriteClicked(position: Int) {
+        soccerTileAdapter.notifyItemChanged(position)
     }
 
 }

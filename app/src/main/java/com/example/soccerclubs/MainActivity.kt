@@ -16,8 +16,6 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportActionBar?.title = "Soccer Clubs Home"
-
         soccerTileList = getList()
 
         supportFragmentManager.commit {
@@ -31,11 +29,11 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
 
         supportFragmentManager.commit {
             setReorderingAllowed(true)
+            addToBackStack(null)
             val bundle = Bundle().apply {
                 putString("soccerTileId", soccerTile.id)
             }
-            hide(ListFragment())
-            add(R.id.fragmentContainerView, DetailFragment().apply {
+            replace(R.id.fragmentContainerView, DetailFragment().apply {
                 arguments = bundle
             })
         }
@@ -44,6 +42,9 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
     override fun onFavoriteClicked(position: Int) {
         val soccerTile = soccerTileList[position]
         soccerTile.isFavorite = !soccerTile.isFavorite
+
+        (supportFragmentManager.fragments[0] as? ListFragment)
+            ?.onFavoriteClicked(position)
     }
 
     private fun getList(): ArrayList<SoccerTile> {

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.soccerclubs.R
 import com.example.soccerclubs.SoccerTileInterface
 import com.example.soccerclubs.data.SoccerTile
+import com.squareup.picasso.Picasso
 
 class SoccerTileAdapter(
     private val data: ArrayList<SoccerTile>,
@@ -39,7 +40,9 @@ class SoccerTileAdapter(
         private val favoriteImageView: ImageView = itemView.findViewById(R.id.favoriteImageView)
 
         fun onBind(SoccerTile: SoccerTile, soccerTileInterface: SoccerTileInterface) {
-            headerImageView.setImageResource(SoccerTile.headerImageResId)
+            Picasso.get().isLoggingEnabled = true
+            Picasso.get().load(SoccerTile.headerImageUrl).into(headerImageView)
+//            headerImageView.setImageResource(SoccerTile.headerImageResId)
             titleTextView.text = SoccerTile.title
             descriptionTextView.text = SoccerTile.description
 

@@ -1,6 +1,8 @@
 package com.example.soccerclubs
 
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.squareup.picasso.Picasso
 
 abstract class BaseMainActivityFragment(layoutId: Int) : Fragment(layoutId) {
 

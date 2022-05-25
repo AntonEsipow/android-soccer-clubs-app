@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.soccerclubs.data.SoccerTile
+import com.squareup.picasso.Picasso
 
 class DetailFragment : BaseMainActivityFragment(R.layout.fragment_detail) {
 
@@ -33,7 +34,10 @@ class DetailFragment : BaseMainActivityFragment(R.layout.fragment_detail) {
         val descriptionTextView: TextView = view.findViewById(R.id.descriptionTextView)
         val descriptionLongTextView: TextView = view.findViewById(R.id.descriptionLongTextView)
 
-        headerImageView.setImageResource(soccerTile.headerImageResId)
+//        headerImageView.setImageResource(soccerTile.headerImageResId)
+//        setImageFromUrl(soccerTile.headerImageUrl, headerImageView)
+        Picasso.get().isLoggingEnabled = true
+        Picasso.get().load(soccerTile.headerImageUrl).into(headerImageView)
         titleTextView.text = soccerTile.title
         descriptionTextView.text = soccerTile.description
         descriptionLongTextView.text = soccerTile.descriptionLong

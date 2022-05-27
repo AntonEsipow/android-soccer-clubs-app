@@ -35,9 +35,12 @@ class DetailFragment : BaseMainActivityFragment(R.layout.fragment_detail) {
         val descriptionLongTextView: TextView = view.findViewById(R.id.descriptionLongTextView)
 
 //        headerImageView.setImageResource(soccerTile.headerImageResId)
-//        setImageFromUrl(soccerTile.headerImageUrl, headerImageView)
         Picasso.get().isLoggingEnabled = true
-        Picasso.get().load(soccerTile.headerImageUrl).into(headerImageView)
+        Picasso.get()
+            .load(soccerTile.headerImageUrl)
+            .placeholder(R.drawable.footbal)
+            .error(R.drawable.error_header)
+            .into(headerImageView)
         titleTextView.text = soccerTile.title
         descriptionTextView.text = soccerTile.description
         descriptionLongTextView.text = soccerTile.descriptionLong

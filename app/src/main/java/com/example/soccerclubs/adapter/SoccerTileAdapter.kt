@@ -41,8 +41,11 @@ class SoccerTileAdapter(
 
         fun onBind(SoccerTile: SoccerTile, soccerTileInterface: SoccerTileInterface) {
             Picasso.get().isLoggingEnabled = true
-            Picasso.get().load(SoccerTile.headerImageUrl).into(headerImageView)
-//            headerImageView.setImageResource(SoccerTile.headerImageResId)
+            Picasso.get()
+                .load(SoccerTile.headerImageUrl)
+                .placeholder(R.drawable.footbal)
+                .error(R.drawable.error_header)
+                .into(headerImageView)
             titleTextView.text = SoccerTile.title
             descriptionTextView.text = SoccerTile.description
 

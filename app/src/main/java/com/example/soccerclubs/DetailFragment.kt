@@ -66,6 +66,8 @@ class DetailFragment : BaseMainActivityFragment(R.layout.fragment_detail) {
                     item.setIcon(R.drawable.ic_favorite_24dp)
                 }
                 soccerTile.isFavorite = !isCurrentFavorite
+
+                SharedPrefUtil.setSoccerTileFavorite(soccerTile.id, soccerTile.isFavorite)
                 true
             }
             else -> onOptionsItemSelected(item)

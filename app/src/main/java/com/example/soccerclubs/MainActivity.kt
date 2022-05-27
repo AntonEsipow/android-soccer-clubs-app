@@ -45,6 +45,8 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
 
         (supportFragmentManager.fragments[0] as? ListFragment)
             ?.onFavoriteClicked(position)
+
+        SharedPrefUtil.setSoccerTileFavorite(soccerTile.id, soccerTile.isFavorite)
     }
 
     private fun getList(): ArrayList<SoccerTile> {
@@ -58,29 +60,32 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
                     buttonText = "Learn More",
                     headerImageResId = R.drawable.everton_header,
                     headerImageUrl = "https://xn----ftbtfpb0b.xn--p1ai/wp-content/uploads/everton-big.png",
-                    teamUrl = "https://www.evertonfc.com/"
+                    teamUrl = "https://www.evertonfc.com/",
+                    isFavorite = SharedPrefUtil.getSoccerTileFavorite("everton")
                 ))
             add(
                 SoccerTile(
-                    id = "westham",
-                    title = "Weatham",
+                    id = "west_ham",
+                    title = "West Ham",
                     description = "Description of the club",
                     descriptionLong = "A longer description of the club that wouldn't fit on a single line",
                     buttonText = "Learn More",
                     headerImageResId = R.drawable.westham_header,
                     headerImageUrl = "https://xn----ftbtfpb0b.xn--p1ai/wp-content/uploads/west-ham-united-big.png",
-                    teamUrl = "https://www.whufc.com/"
+                    teamUrl = "https://www.whufc.com/",
+                    isFavorite = SharedPrefUtil.getSoccerTileFavorite("west_ham")
                 ))
             add(
                 SoccerTile(
-                    id = "leicestercity",
+                    id = "leicester_city",
                     title = "Leicester City",
                     description = "Description of the club",
                     descriptionLong = "A longer description of the club that wouldn't fit on a single line",
                     buttonText = "Learn More",
                     headerImageResId = R.drawable.paris_header,
                     headerImageUrl = "https://xn----ftbtfpb0b.xn--p1ai/wp-content/uploads/leicester-city-big.png",
-                    teamUrl = "https://parisfc.fr/"
+                    teamUrl = "https://parisfc.fr/",
+                    isFavorite = SharedPrefUtil.getSoccerTileFavorite("leicester_city")
                 ))
             add(
                 SoccerTile(
@@ -91,7 +96,8 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
                     buttonText = "Learn More",
                     headerImageResId = R.drawable.arsenal_header,
                     headerImageUrl = "https://xn----ftbtfpb0b.xn--p1ai/wp-content/uploads/arsenal-big.png",
-                    teamUrl = "https://www.arsenal.com/"
+                    teamUrl = "https://www.arsenal.com/",
+                    isFavorite = SharedPrefUtil.getSoccerTileFavorite("arsenal")
                 ))
             add(
                 SoccerTile(
@@ -102,7 +108,8 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
                     buttonText = "Learn More",
                     headerImageResId = R.drawable.borussia_header,
                     headerImageUrl = "https://xn----ftbtfpb0b.xn--p1ai/wp-content/uploads/borussia-dortmund-big.png",
-                    teamUrl = "https://www.bvb.de/eng"
+                    teamUrl = "https://www.bvb.de/eng",
+                    isFavorite = SharedPrefUtil.getSoccerTileFavorite("borussia")
                 ))
             add(
                 SoccerTile(
@@ -113,7 +120,8 @@ class MainActivity : AppCompatActivity(), SoccerTileInterface {
                     buttonText = "Learn More",
                     headerImageResId = R.drawable.juventus_header,
                     headerImageUrl = "https://xn----ftbtfpb0b.xn--p1ai/wp-content/uploads/juventus-big.png",
-                    teamUrl = "https://www.juventus.com/en/"
+                    teamUrl = "https://www.juventus.com/en/",
+                    isFavorite = SharedPrefUtil.getSoccerTileFavorite("juventus")
                 ))
         }
     }
